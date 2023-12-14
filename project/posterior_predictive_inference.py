@@ -9,7 +9,7 @@ matplotlib.rcParams["figure.dpi"] = 1000
 year = 2021
 
 # loading data
-sample_csv_folder = f"project/year{year}_model_sample_csvs"
+sample_csv_folder = f"project/year{year}_driver_constructor_model_sample_csvs"
 data_file = f"project/f1_data_year{year}.pkl"
 sample = cmdstanpy.from_csv(sample_csv_folder)
 data = pandas.read_pickle(data_file)
@@ -96,11 +96,11 @@ data.loc[driver]["Position"].plot(kind="hist",
                                   color="red")
 
 matplotlib.pyplot.xticks(range(1, 21), range(1, 21))
-#matplotlib.pyplot.title(f"Actual compared to simulated race results for {driver}", fontsize=16)
+matplotlib.pyplot.title(f"Actual compared to simulated race results for {driver}", fontsize=16)
 matplotlib.pyplot.ylabel("Frequency", fontsize=16)
 matplotlib.pyplot.xlabel("Finishing position", fontsize=16)
 matplotlib.pyplot.tick_params(axis="both", labelsize=12, width=2, size=8)
 matplotlib.pyplot.legend()
 matplotlib.pyplot.tight_layout()
 matplotlib.pyplot.savefig(f"{driver}.png")
-#matplotlib.pyplot.show()
+matplotlib.pyplot.show()

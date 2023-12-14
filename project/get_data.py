@@ -48,7 +48,15 @@ for i, team in enumerate(master["TeamId"].unique(), start=1):
 master["TeamNumber"] = master["TeamId"].map(constructor_dictionary)
 master["DriverNumber"] = master.index.map(driver_dictionary)
 
+# UNCOMMENT IF driver_constructor_circuit_model.stan IS DESIRED TO BE USED
+# CIRCUIT TYPE DATA MUST BE IMPLEMENTED MANUALLY.
+# COMMENTED OUT SINCE THIS MODEL PERFORMS THE WORST AND CAN EASILY LEAD TO COMPILATION
+# ERRORS SINCE IT RELIES ON MANUALLY IMPLEMENTED DATA.
+# ONE LINE IN THE FOLLOWING CODE BLOCK MUST ALSO BE UNCOMMENTED.
+# -------------------------------------------------------------------------
+
 # dictionary that tells if a circuit is a street or race circuit
+# THIS DICTIONARY MUST BE IMPLEMENTED MANUALLY
 #circuit_types = {"Bahrain Grand Prix": "Race",
 #                 "Saudi Arabian Grand Prix": "Street",
 #                 "Australian Grand Prix": "Street",
@@ -91,7 +99,8 @@ master["DriverNumber"] = master.index.map(driver_dictionary)
 #master["CircuitType"] = master["Race"].map(circuit_types)
 #master["CircuitTypeIndex"] = master["CircuitType"].map(circuit_type_index)
 
-
+# -------------------------------------------------------------------------
+# END OPTIONAL UNCOMMENTING
 
 
 # forcing entries that should be integers to be integers; for example some were stored as 7.0
@@ -99,6 +108,7 @@ master["Position"] = master["Position"].astype(int)
 master["GridPosition"] = master["GridPosition"].astype(int)
 master["TeamNumber"] = master["TeamNumber"].astype(int)
 master["DriverNumber"] = master["DriverNumber"].astype(int)
+# UNCOMMENT FOLLOWING LINE IF CIRCUIT TYPE MODEL IS DESIRED
 #master["CircuitTypeIndex"] = master["CircuitTypeIndex"].astype(int)
 
 # saving dataframe
